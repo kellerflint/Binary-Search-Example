@@ -6,9 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Search Demo</title>
     <style>
-        #menu {
+        .menu-left {
             position: fixed;
             margin-left: 1%;
+            background-color: lightblue;
+            padding: 10px;
+            border: 3px solid darkblue;
+
+        }
+
+        .menu-right {
+            position: fixed;
+            margin-left: 80%;
             background-color: lightblue;
             padding: 10px;
             border: 3px solid darkblue;
@@ -49,7 +58,7 @@
 
 <body>
     <h1 id="win">YOU DID IT!</h1>
-    <div id="menu">
+    <div id="menu" class="menu-left">
         <h2 id="target">Target Number: </h2>
         <p id="counter">Clicks: 0</p>
     </div>
@@ -89,6 +98,18 @@
             node.append(p);
             main.append(node);
         }
+
+        let menu = document.getElementById("menu");
+        menu.addEventListener("mouseenter", function () {
+            console.log("over");
+            if (menu.classList.contains("menu-left")) {
+                menu.classList.add("menu-right");
+                menu.classList.remove("menu-left");
+            } else {
+                menu.classList.add("menu-left");
+                menu.classList.remove("menu-right");
+            }
+        });
 
         target = numbers[Math.floor(Math.random() * numbers.length)];
 
